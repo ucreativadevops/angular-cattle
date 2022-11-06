@@ -1,7 +1,7 @@
     pipeline {
         agent {
             docker { 
-                label 'docker-ubuntu'
+                label 'jenkins-agent'
                 image 'node:16.14.2' 
             }
         }
