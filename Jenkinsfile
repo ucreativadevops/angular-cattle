@@ -1,20 +1,20 @@
-pipeline {
-    agent {
-        docker { 
-            label 'docker-ubuntu'
-            image 'node:16.14.2' 
-        }
-    }
-    stages {
-        stage('Install dependencies') {
-            steps {
-                bat ' npm install'
+    pipeline {
+        agent {
+            docker { 
+                label 'docker-ubuntu'
+                image 'node:16.14.2' 
             }
         }
-        stage('Build App') {
-            steps {
-                bat 'npm run build'
+        stages {
+            stage('Install dependencies') {
+                steps {
+                    sh ' npm install'
+                }
+            }
+            stage('Build App') {
+                steps {
+                    sh 'npm run build'
+                }
             }
         }
     }
-}
