@@ -28,9 +28,16 @@ pipeline {
       }
     }
     stage('Build App') {
-        steps {
-            sh 'npm run build'
+      agent {
+        docker { 
+          label 'jenkins-agent'
+          image 'node:16.14.2' 
+          reuseNode true
         }
+      }
+      steps {
+          sh 'npm run build'
+      }
     }
   }
 }
