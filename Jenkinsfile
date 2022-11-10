@@ -8,7 +8,7 @@ pipeline {
       }
       steps {
         echo 'Scanning Code'
-        sh "docker run --rm -e SONAR_HOST_URL='https://sonarcloud.io' -e SONAR_TOKEN='71976fc36105fa15501680e62729b95a0501ea4e' -e SONAR_SCANNER_OPTS='-Dsonar.projectKey=test-docker' -v '/tmp/workspace/cattle-angular_main:/usr/src' sonarsource/sonar-scanner-cli"
+        sh "docker run --rm -e SONAR_HOST_URL='https://sonarcloud.io' -e SONAR_TOKEN='71976fc36105fa15501680e62729b95a0501ea4e' -e SONAR_SCANNER_OPTS='-Dsonar.projectKey=test-docker' '-Dsonar.projectKey=test-docker' -v '/tmp/workspace/cattle-angular_main:/usr/src' sonarsource/sonar-scanner-cli"
       }
     }
     stage('Install dependencies') {
