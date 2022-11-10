@@ -10,7 +10,7 @@ pipeline {
     stage('Using SonarQube Containerized') {
       steps {
         echo 'Scanning Code'
-        sh 'docker run --rm -e SONAR_HOST_URL="https://sonarcloud.io" -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=test-docker -Dsonar.organization=summit-test -Dsonar.sources=src" -v "/tmp/workspace/cattle-angular_main:/usr/src" sonarsource/sonar-scanner-cli'
+        sh 'docker run --rm -e SONAR_HOST_URL="https://sonarcloud.io" -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=test-docker -Dsonar.organization=summit-test -Dsonar.sources=src" -v ".:/usr/src" sonarsource/sonar-scanner-cli'
       }
     }
     stage('Install dependencies') {
